@@ -3,6 +3,8 @@ const hbs = require('hbs');
 const fs = require('fs');
 
 const app = express();
+const port = process.env.PORT || 3000;
+
 
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('getCurrentYear', () => new Date().getFullYear());
@@ -12,7 +14,6 @@ hbs.registerHelper('capitalize', (text) => {
 
 app.set('view engine', 'hbs');
 
-//Middle ware
 app.use((request, response, next) => {
     let now = new Date().toDateString();
     let log = `${now} ${request.method} ${request.url}`;
@@ -46,6 +47,6 @@ app.get('/normal', (reqest, response) => {
     response.send('Serving root boy.');
 });
 
-app.listen(3000, () => {
-    console.log(`Serving on port 3000`);
+app.listen(port, () => {
+    console.log(`Serving on port ${port}`);
 });
