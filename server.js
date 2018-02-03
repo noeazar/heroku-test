@@ -43,6 +43,12 @@ app.get('/about', (reqest, response) => {
     });
 });
 
+app.get('/projects', (reqest, response) => {
+    response.render('projects.hbs', {
+        pageTitle: 'Projects'
+    });
+});
+
 app.get('/normal', (reqest, response) => {
     response.send('Serving root boy.');
 });
